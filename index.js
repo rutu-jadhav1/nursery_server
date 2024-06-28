@@ -1,5 +1,6 @@
 import express from "express"
-
+import dotenv, { config } from "dotenv"
+dotenv(config)
 const app = express();
 
 app.use(express.json())
@@ -176,7 +177,8 @@ app.delete("/plant/:id",(req,res)=>{
 
 })
 
-const PORT = 5000
+const PORT = process.env.PORT
+
 app.listen(PORT, (req,res)=>{
     console.log(`Server started on port ${PORT}`)
 })

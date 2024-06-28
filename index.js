@@ -96,6 +96,20 @@ app.get("/plants", (req,res)=>{
     })
 })
 
+app.get("/plant/:id", (req,res)=>{
+    const {id} =req.params
+
+    const plant = plants.find((p)=>{
+        return p.id == id
+    })
+
+    res.json({
+        success : plant ? true : false,
+        data : id,
+        message : plant ?  "Plant data fetched" : "Plant not found"
+    })
+})
+
 
 const PORT = 5000
 app.listen(PORT, (req,res)=>{
